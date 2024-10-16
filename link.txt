@@ -1,0 +1,12 @@
+Per mappa
+https://github.com/react-native-maps/react-native-maps
+
+localizzazione
+https://github.com/Agontuk/react-native-geolocation-service
+
+robo per la connessione http
+https://axios-http.com/docs/intro
+
+meteo (chatgpt :) )
+https://docs.openweather.co.uk/appid
+
