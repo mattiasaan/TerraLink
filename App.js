@@ -5,10 +5,15 @@ import {
   StyleSheet,
   PermissionsAndroid,
   Image,
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import Geolocation from "react-native-geolocation-service";
 import axios from "axios";
+
+import Farmacieimage1 from './Screens/images/Farmacie-1.png'
+import Farmacieimage2 from './Screens/images/Farmacie-2.png'
 
 const App = () => {
   const [region, setRegion] = useState({
@@ -46,7 +51,7 @@ const App = () => {
           {
             title: "Permesso di geolocalizzazione",
             message: "L'app ha bisogno di accedere alla tua posizione.",
-            buttonNeutral: "Più tardi",
+            buttonNeutral: "Non ora",
             buttonNegative: "Annulla",
             buttonPositive: "OK",
           }
@@ -117,7 +122,6 @@ const App = () => {
 
       <View style={styles.mapContainer}>
         <MapView style={styles.map} region={region}>
-          {/* Mostra la posizione dell'utente se disponibile */}
           {userLocation && (
             <Marker coordinate={userLocation} title="La tua posizione" />
           )}
@@ -129,6 +133,16 @@ const App = () => {
             title="Bolzano"
           />
         </MapView>
+      </View>
+
+      <View>
+        <TouchableOpacity style={styles.defaultContainer} /* onPress={() => navigation.navigate('Farmacie')} */ >
+          <Image source={Farmacieimage1} style={styles.image} />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Farmacie di turno</Text>
+            <Text style={styles.description}>Visualizza le farmacie aperte in questo momento</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -185,6 +199,40 @@ const styles = StyleSheet.create({
   map: {
     width: "100%",
     height: "100%",
+  },
+
+  defaultContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 20,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 4,
+    elevation: 4, //per android se no non  va 
+  },
+
+  textContainer: {
+    padding: 15,
+  },
+
+
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+
+  description: {
+    fontSize: 14,
+    color: '#666',
+  },
+
+  image: {
+    width: '100%',
+    height: 180,
+    resizeMode: 'cover',
   },
 });
 
