@@ -10,3 +10,8 @@ https://axios-http.com/docs/intro
 meteo (chatgpt :) )
 https://docs.openweather.co.uk/appid
 
+-----------------------------------------------
+
+https://reactnavigation.org/docs/getting-started/
+
+https://reactnative.dev/docs/network
