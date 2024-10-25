@@ -91,7 +91,7 @@ const Home = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.weatherContainer}>
         <Text style={styles.weatherHeader}>Meteo a Bolzano</Text>
         {weather ? (
@@ -146,7 +146,7 @@ const Home = ({ navigation }) => {
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
