@@ -33,3 +33,10 @@ TURN_STATUS_I: Fase del turno (se di turno) in lingua italiana ("INIZIO SERVIZIO
 TURN_NOTES_D: Note sul Servizio di turno in lingua tedesca ("Turnusdienst mit telefonischer Erreichbarkeit", "Turnusdienst mit anwesendem Apotheker")
 
 TURN_NOTES_I: Note sul Servizio di turno in lingua italiana ("Servizio di turno con reperibilità telefonica","Servizio di turno con farmacista all'interno")
+
+
+
+
+--------------------------------------------------
+font
+https://fontstruct.com/fontstructions/show/1947061/ndot-45-inspired-by-nothing

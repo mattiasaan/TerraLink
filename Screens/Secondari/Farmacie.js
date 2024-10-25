@@ -13,7 +13,7 @@ function èApertaOra(orarioNormale, orarioTurno, èDiTurno, statoTurno) {
 
   if (verificaOrario(orarioNormale)) return true;
 
-  if (èDiTurno === 1 && statoTurno === "SERVIZIO TURNO" && verificaOrario(orarioTurno)) {
+  if (èDiTurno === 1 || statoTurno === "SERVIZIO TURNO" && verificaOrario(orarioTurno)) { //zio porco l'or 
     return true;
   }
 

@@ -16,18 +16,21 @@ import axios from "axios";
 
 import Farmacieimage1 from './images/Farmacie-1.png'
 import Farmacieimage2 from './images/Farmacie-2.png'
+import BolzanoImage from './images/bolzanoresize.png'
 
 const Home = ({ navigation }) => {
+  /*
   const [region, setRegion] = useState({
     latitude: 46.4983, // bz
     longitude: 11.3526, // bz
     latitudeDelta: 0.0922, //bho ma senza nn funziona
     longitudeDelta: 0.0421, //bho ma senza nn funziona
   });
-
+  */
   const [weather, setWeather] = useState(null);
+  /*
   const [userLocation, setUserLocation] = useState(null);
-
+*/
   useEffect(() => {
     const fetchWeather = async () => {
       try {
@@ -46,6 +49,7 @@ const Home = ({ navigation }) => {
       }
     };
 
+    /*
     const requestLocationPermission = async () => {
       try {
         const granted = await PermissionsAndroid.request(
@@ -86,8 +90,11 @@ const Home = ({ navigation }) => {
       );
     };
 
+    */
     fetchWeather();
+    /*
     requestLocationPermission();
+    */
   }, []);
 
   return (
@@ -122,19 +129,14 @@ const Home = ({ navigation }) => {
         )}
       </View>
 
-      <View style={styles.mapContainer}>
-        <MapView style={styles.map} region={region}>
-          {userLocation && (
-            <Marker coordinate={userLocation} title="La tua posizione" />
-          )}
-          <Marker
-            coordinate={{
-              latitude: region.latitude,
-              longitude: region.longitude,
-            }}
-            title="Bolzano"
-          />
-        </MapView>
+      <View>
+        <TouchableOpacity style={styles.defaultContainer} onPress={() => navigation.navigate('Mappa')} >
+          <Image source={BolzanoImage} style={styles.image} />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Mappa</Text>
+            <Text style={styles.description}>Visualizza la mappa dettagliata di bolzano</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
       <View>
@@ -161,8 +163,9 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     elevation: 4,
-    marginBottom: 10,
+    marginBottom: 15,
     alignItems: "center",
+
   },
   weatherHeader: {
     fontSize: 18,
@@ -192,21 +195,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333",
   },
-  mapContainer: {
-    height: 300,
-    borderRadius: 10,
-    overflow: "hidden",
-    elevation: 4,
-  },
-  map: {
-    width: "100%",
-    height: "100%",
-  },
 
   defaultContainer: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: 15,
     overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
@@ -218,7 +211,6 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 15,
   },
-
 
   title: {
     fontSize: 18,
