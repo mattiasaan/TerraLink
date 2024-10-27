@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: "#f7f7f7",
+    backgroundColor: "#ffffff"
   },
   weatherContainer: {
     backgroundColor: "#ffffff",
