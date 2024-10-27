@@ -25,3 +25,11 @@ When programming in JavaScript, you'll need to compare variables sometimes. To d
 For example, 5 === "5" will return a false result. Even though the value of both variables is the same, their type is not; one of them is a String ("5"), and the other one is an Integer (5).
 
 On the other hand,  5 == "5" will return a true result. Both variables have the same value; therefore, the result will be true.
+
+
+
+------------------------------
+effeto vetro
+https://github.com/Kureev/react-native-blur
+
+https://github.com/Dimezis/BlurView

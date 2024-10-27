@@ -8,29 +8,29 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Geolocation from "react-native-geolocation-service";
 import axios from "axios";
+import { useFonts } from 'expo-font';
 
 import Farmacieimage1 from './images/Farmacie-1.png'
 import Farmacieimage2 from './images/Farmacie-2.png'
 import BolzanoImage from './images/bolzanoresize.png'
 
 const Home = ({ navigation }) => {
-  /*
-  const [region, setRegion] = useState({
-    latitude: 46.4983, // bz
-    longitude: 11.3526, // bz
-    latitudeDelta: 0.0922, //bho ma senza nn funziona
-    longitudeDelta: 0.0421, //bho ma senza nn funziona
+
+  const [fontsLoaded1] = useFonts({
+    'Ndot45': require('./fonts/ndot-45-inspired-by-nothing.ttf'),
   });
-  */
+
+  const [fontsLoaded2] = useFonts({
+    'Ndot47': require('./fonts/ndot-47-inspired-by-nothing.ttf'),
+  });
+
+  const [fontsLoaded3] = useFonts({
+    'Ndot5x7': require('./fonts/nothing-font-5x7.ttf'),
+  });
+
   const [weather, setWeather] = useState(null);
-  /*
-  const [userLocation, setUserLocation] = useState(null);
-*/
+
   useEffect(() => {
     const fetchWeather = async () => {
       try {
@@ -49,52 +49,8 @@ const Home = ({ navigation }) => {
       }
     };
 
-    /*
-    const requestLocationPermission = async () => {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-          {
-            title: "Permesso di geolocalizzazione",
-            message: "l'app ha bisogno di accedere alla tua posizione.",
-            buttonNeutral: "Non ora",
-            buttonNegative: "Annulla",
-            buttonPositive: "OK",
-          }
-        );
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          getCurrentLocation();
-        } else {
-          console.log("Permesso di geolocalizzazione negato");
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-    };
 
-    const getCurrentLocation = () => {
-      Geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-          setRegion({
-            ...region,
-            latitude,
-            longitude,
-          });
-        },
-        (error) => {
-          console.error(error.code, error.message);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-      );
-    };
-
-    */
     fetchWeather();
-    /*
-    requestLocationPermission();
-    */
   }, []);
 
   return (
@@ -105,9 +61,6 @@ const Home = ({ navigation }) => {
           <>
             <Text style={styles.weatherTemp}>
               {weather.main.temp.toFixed(1)} °C
-            </Text>
-            <Text style={styles.weatherDescription}>
-              {weather.weather[0].description}
             </Text>
             <Image
               style={styles.weatherIcon}
@@ -173,9 +126,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   weatherTemp: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#ff6b6b",
+    fontSize: 42,
+    fontFamily: "Ndot5x7",
   },
   weatherDescription: {
     fontSize: 18,
@@ -183,8 +135,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   weatherIcon: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     marginBottom: 10,
   },
   weatherDetails: {
