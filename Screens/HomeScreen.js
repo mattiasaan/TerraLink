@@ -12,7 +12,6 @@ import axios from "axios";
 import { useFonts } from 'expo-font';
 
 import Farmacieimage1 from './images/Farmacie-1.png'
-import Farmacieimage2 from './images/Farmacie-2.png'
 import BolzanoImage from './images/bolzanoresize.png'
 
 const Home = ({ navigation }) => {
@@ -87,7 +86,7 @@ const Home = ({ navigation }) => {
           <Image source={BolzanoImage} style={styles.image} />
           <View style={styles.textContainer}>
             <Text style={styles.title}>Mappa</Text>
-            <Text style={styles.description}>Visualizza la mappa dettagliata di bolzano</Text>
+            <Text style={styles.description}>Visualizza la mappa di bolzano e i defibrillatori</Text>
           </View>
         </TouchableOpacity>
       </View>
