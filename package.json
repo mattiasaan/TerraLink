@@ -9,13 +9,20 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/blur": "^4.4.1",
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/native-stack": "^6.11.0",
     "axios": "^1.7.7",
-    "expo": "^51.0.38",
+    "expo": "~51.0.28",
     "expo-status-bar": "~1.12.1",
+    "moment": "^2.30.1",
+    "moment-range": "^4.0.2",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-geolocation-service": "^5.3.1",
-    "react-native-maps": "1.14.0"
+    "react-native-linear-gradient": "^2.8.3",
+    "react-native-maps": "1.14.0",
+    "react-native-webview": "^13.12.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
