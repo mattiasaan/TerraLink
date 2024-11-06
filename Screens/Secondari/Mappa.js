@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-
+import { BottomSheet, Button } from '@rneui/themed';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const MappaScreen = () => {
   const [region] = useState({
@@ -12,6 +13,7 @@ const MappaScreen = () => {
   });
   
   const [showMarkers, setShowMarkers] = useState(false);
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
 
   const markers = [
     { id: 1, coordinate: { latitude: 46.488516, longitude: 11.324721 }, title: "Piazza Don Bosco" },
@@ -30,67 +32,91 @@ const MappaScreen = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      <MapView style={styles.map} region={region}>
-        {showMarkers && markers.map(marker => (
-          <Marker key={marker.id} coordinate={marker.coordinate} title={marker.title} image={require('./images-2/dae-simbolo.png')} style={styles.marker} />
-        ))}
-      </MapView>
-      <TouchableOpacity style={styles.button} onPress={() => setShowMarkers(!showMarkers)}>
-        <Text style={styles.buttonText}>
-          {showMarkers ? 'Nascondi posizione defibrillatori' : 'Mostra posizione defibrillatori'}
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <MapView style={styles.map} region={region}>
+          {showMarkers && markers.map(marker => (
+            <Marker key={marker.id} coordinate={marker.coordinate} title={marker.title} image={require('./images-2/dae-simbolo.png')} style={styles.marker} />
+          ))}
+        </MapView>
+
+        <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
+          <View style={styles.bottomSheetContent}>
+            <Button
+              title={showMarkers ? "Nascondi defibrillatori" : "Mostra defibrillatori"}
+              onPress={() => setShowMarkers(!showMarkers)}
+              buttonStyle={styles.bottomSheetButton}
+            />
+            <Button
+              title="Chiudi"
+              onPress={() => setIsBottomSheetVisible(false)}
+              buttonStyle={styles.bottomSheetButton}
+            />
+          </View>
+        </BottomSheet>
+
+        <Button
+          title="Altre opzioni"
+          onPress={() => setIsBottomSheetVisible(true)}
+          buttonStyle={styles.openBottomSheetButton}
+        />
+
+        <Text style={styles.nota}>
+          Nota: la posizione dei defibrillatori potrebbe non essere precisa o non accessibile
         </Text>
-      </TouchableOpacity>
-      <Text style={styles.nota}>
-        Nota: la posizione dei defibrillatori potrebbe non essere precisa o non accessibile
-      </Text>
-    </View>
+      </View>
+    </SafeAreaProvider>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff', // Colore di sfondo bianco
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   map: {
-    marginTop: "5.5%",
-    width: "90%",
-    height: "70%",
-    borderRadius: 10, // Aggiunto bordo arrotondato alla mappa
+    width: "100%",
+    height: "100%",
+    borderRadius: 0,
   },
-
   marker: {
     width: 10,
     height: 10,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
-
-  button: {
-    backgroundColor: '#EE4B2B', // Colore blu del pulsante
+  openBottomSheetButton: {
+    backgroundColor: '#0066CC',
+    marginBottom: 20,
     padding: 15,
     borderRadius: 5,
-    margin: 15,
-    width: "90%",
+    width: '100%',
     alignItems: 'center',
-    shadowColor: '#000', // Ombra del pulsante
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    elevation: 2, // Ombra per Android
   },
-  buttonText: {
-    color: '#ffffff', // Colore del testo del pulsante
-    fontWeight: 'bold',
-    fontSize: 16, // Dimensione del font
+  bottomSheetButton: {
+    backgroundColor: '#0066CC',
+    marginTop: 10,
+    padding: 15,
+    borderRadius: 5,
+    width: '100%',
+    alignItems: 'center',
   },
-
+  bottomSheetContent: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
+  },
   nota: {
     fontSize: 8,
+    marginTop: 10,
+    textAlign: 'center',
   },
 });
-
-  
 
 export default MappaScreen;
