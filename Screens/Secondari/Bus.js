@@ -4,36 +4,41 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const AutobusScreen = () => {
     return(
-        <ScrollView >
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
-            </TouchableOpacity>
+        <ScrollView style={styles.container}>
+            <View style={styles.TouchArea}>
+                <TouchableOpacity>
+                    <Text>Linea 3</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.TouchArea}>
+                <TouchableOpacity>
+                    <Text>Linea 3</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.TouchArea}>
+                <TouchableOpacity>
+                    <Text>Linea 3</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.TouchArea}>
+                <TouchableOpacity>
+                    <Text>Linea 3</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.TouchArea}>
+                <TouchableOpacity>
+                    <Text>Linea 3</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    Container:{
+    container: {
         flex: 1,
-        padding: 10
+        padding: 10,
+        backgroundColor: "#ffffff"
     },
     TouchArea:{
         backgroundColor: 'white',

@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.0.5",
     "@react-native-community/blur": "^4.4.1",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
@@ -20,8 +21,10 @@
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-geolocation-service": "^5.3.1",
+    "react-native-gesture-handler": "^2.20.2",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-maps": "^1.14.0",
+    "react-native-reanimated": "~3.10.1",
     "react-native-webview": "^13.12.3"
   },
   "devDependencies": {
