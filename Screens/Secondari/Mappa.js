@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import BottomSheet from '@gorhom/bottom-sheet';
+
 
 const MappaScreen = () => {
-  const bottomSheetRef = useRef(null);
-
   const [region] = useState({
     latitude: 46.487, 
     longitude: 11.34, 
@@ -28,45 +26,24 @@ const MappaScreen = () => {
     { id: 10, coordinate: { latitude: 46.4996132, longitude: 11.3569185 }, title: "Piazza municipio" },
     { id: 11, coordinate: { latitude: 46.4976197, longitude: 11.3601663 }, title: "Via Renon" },
     { id: 12, coordinate: { latitude: 46.4931729, longitude: 11.3609979 }, title: "cineplex" },
+    //{ id: 13, coordinate: { latitude: 46.498601, longitude: 11.309258 }, title: "Ospedale", image: require("./images-2/ospedale.png")}
   ];
 
   return (
     <View style={styles.container}>
-      {/* Mappa che occupa tutto lo schermo */}
       <MapView style={styles.map} region={region}>
         {showMarkers && markers.map(marker => (
-          <Marker 
-            key={marker.id} 
-            coordinate={marker.coordinate} 
-            title={marker.title} 
-            image={require('./images-2/dae-simbolo.png')} 
-            style={styles.marker}
-          />
+          <Marker key={marker.id} coordinate={marker.coordinate} title={marker.title} image={require('./images-2/dae-simbolo.png')} style={styles.marker} />
         ))}
       </MapView>
-      
-      {/* Bottone per mostrare/nascondere i marker */}
       <TouchableOpacity style={styles.button} onPress={() => setShowMarkers(!showMarkers)}>
         <Text style={styles.buttonText}>
           {showMarkers ? 'Nascondi posizione defibrillatori' : 'Mostra posizione defibrillatori'}
         </Text>
       </TouchableOpacity>
-
-      {/* BottomSheet che può essere tirato su per visualizzare ulteriori informazioni */}
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={0}  // Inizia con il foglio visibile al 10% dell'altezza dello schermo
-        snapPoints={['10%', '50%', '90%']}  // Usa snap point validi
-        enablePanDownToClose={true}  // Permette all'utente di chiudere il BottomSheet
-      >
-        <View style={styles.contentContainer}>
-          {/* Aggiungi una barra per tirare su il bottom sheet */}
-          <View style={styles.handle}></View>
-          
-          <Text style={styles.title}>More Information</Text>
-          <Text style={styles.description}>Here you can add more details about the location.</Text>
-        </View>
-      </BottomSheet>
+      <Text style={styles.nota}>
+        Nota: la posizione dei defibrillatori potrebbe non essere precisa o non accessibile
+      </Text>
     </View>
   );
 };
@@ -75,51 +52,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff', // Colore di sfondo bianco
+    alignItems: 'center',
   },
   map: {
-    width: '100%', // La mappa occupa tutto lo schermo
-    height: '100%', // La mappa occupa tutto lo schermo
+    marginTop: "5.5%",
+    width: "90%",
+    height: "70%",
+    borderRadius: 10, // Aggiunto bordo arrotondato alla mappa
   },
+
   marker: {
     width: 10,
     height: 10,
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   },
+
   button: {
-    position: 'absolute',
-    bottom: 120, // Distanza dal fondo
-    left: '5%',
-    backgroundColor: '#EE4B2B',
+    backgroundColor: '#EE4B2B', // Colore blu del pulsante
     padding: 15,
     borderRadius: 5,
-    width: '90%',
+    margin: 15,
+    width: "90%",
     alignItems: 'center',
+    shadowColor: '#000', // Ombra del pulsante
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    elevation: 2, // Ombra per Android
   },
   buttonText: {
-    color: '#ffffff',
+    color: '#ffffff', // Colore del testo del pulsante
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 16, // Dimensione del font
   },
-  contentContainer: {
-    padding: 16,
-    backgroundColor: 'white',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  description: {
-    fontSize: 16,
-    marginTop: 8,
-  },
-  handle: {
-    width: 60,
-    height: 5,
-    borderRadius: 10,
-    backgroundColor: '#EEE',
-    alignSelf: 'center',
-    marginVertical: 10,
+
+  nota: {
+    fontSize: 8,
   },
 });
+
+  
 
 export default MappaScreen;
