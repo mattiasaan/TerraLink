@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font';
 
 import Farmacieimage1 from './images/Farmacie-1.png'
 import BolzanoImage from './images/bolzanoresize.png'
+import BolzanoBus from './images/bus.png'
 
 const Home = ({ navigation }) => {
 
@@ -97,6 +98,16 @@ const Home = ({ navigation }) => {
           <View style={styles.textContainer}>
             <Text style={styles.title}>Farmacie di turno</Text>
             <Text style={styles.description}>Visualizza le farmacie aperte in questo momento</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <TouchableOpacity style={styles.defaultContainer} onPress={() => navigation.navigate('Autobus')} >
+          <Image source={BolzanoBus} style={styles.image} />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Info Bus</Text>
+            <Text style={styles.description}>Visualizza gli orari dei bus</Text>
           </View>
         </TouchableOpacity>
       </View>
