@@ -59,6 +59,7 @@ const MappaScreen = () => {
           title="Altre opzioni"
           onPress={() => setIsBottomSheetVisible(true)}
           buttonStyle={styles.openBottomSheetButton}
+          titleStyle={styles.titleStyle}
         />
 
         <Text style={styles.nota}>
@@ -89,11 +90,19 @@ const styles = StyleSheet.create({
   openBottomSheetButton: {
     backgroundColor: '#0066CC',
     marginBottom: 20,
-    padding: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 0,
     borderRadius: 5,
     width: '100%',
-    alignItems: 'center',
+    alignSelf: 'center',
   },
+  
+  titleStyle: {
+    textAlign: 'center',
+    width: '100%',
+    color: '#fff',
+  },
+
   bottomSheetButton: {
     backgroundColor: '#0066CC',
     marginTop: 10,
