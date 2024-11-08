@@ -8,10 +8,83 @@ const AutobusScreen = () => {
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <TouchableOpacity style={styles.TouchArea}>
                 <View style={styles.rowContainer}>
-                    <Text style={styles.NumberText}>3</Text>
-                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                    <Text style={styles.NumberText}>1</Text>
+                    <Text style={styles.TouchAreaText}>Funivia del Colle </Text>
                     <Text style={styles.downloadText}>Download</Text>
                     <Image source={DownloadImage} style={styles.DownloadImage} />
+                </View>
+                <Text style={styles.DestinationText}>Piazza Gries </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.TouchArea}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.NumberText}>3</Text>
+                    <Text style={styles.TouchAreaText}>Linea 3</Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
@@ -104,8 +177,12 @@ const styles = StyleSheet.create({
         height:18,
         marginLeft:5,
 
-    }
+    },
 
+    DestinationText: {
+        marginLeft: 83,
+        fontSize: 16,
+    }
 
 })
 
