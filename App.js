@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Image, Text, View } from 'react-native';
 import HomeScreen from './Screens/HomeScreen';
 import FarmacieScreen from './Screens/Secondari/Farmacie';
 import MappaScreen from './Screens/Secondari/Mappa';
@@ -15,7 +16,22 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Farmacie" component={FarmacieScreen} />
         <Stack.Screen name="Mappa" component={MappaScreen} />
-        <Stack.Screen name="Autobus" component={AutobusScreen} />
+
+        <Stack.Screen
+          name="Autobus"
+          component={AutobusScreen}
+          options={{
+            headerTitle: () => (
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image
+                  source={require('./Screens/images/sudtirollll.png')}
+                  style={{ width: 34, height: 34, marginRight: 8 }}
+                />
+                <Text>Autobus</Text>
+              </View>
+            ),
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
