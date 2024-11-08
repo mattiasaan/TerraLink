@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Linking } from "react-native";
 
 import DownloadImage from './images-2/download-2-line.png';
+import DownloadImage2 from './images-2/download-2-line-2.png';
+
 
 const lineData = [
     { number: "1", start: "Funivia del Colle", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
@@ -58,6 +60,13 @@ const AutobusScreen = () => (
                 url={line.url}
             />
         ))}
+        <TouchableOpacity style={styles.TouchAreaGeneral} onPress={() => openURL("https://moovitapp.com/index/public-transit-maps/?map=Italy_Trento_Bolzano_e_Belluno_Bolzano_and_Merano_urban_network.pdf")}>
+                <View style={styles.rowContainer}>
+                    <Text style={styles.GeneralText}>Mappa generale dei Bus </Text>
+                    <Text style={styles.downloadTextGeneral}>Download</Text>
+                    <Image source={DownloadImage2} style={styles.DownloadImage} />
+                </View>
+            </TouchableOpacity>
     </ScrollView>
 );
 
@@ -75,6 +84,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginVertical: 10
     },
+
+    TouchAreaGeneral:{
+        backgroundColor: '#08607e',
+        width: '97%',
+        paddingVertical: 15,
+        borderRadius: 10,
+        marginVertical: 10
+    },
+
     rowContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -102,11 +120,29 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginLeft: 'auto'
     },
+
+    downloadTextGeneral: {
+        color: '#FFFFFF',
+        fontWeight: "bold",
+        fontSize: 14,
+        marginLeft: 'auto'
+    },
+
     DownloadImage: {
         width: 18,
         height: 18,
         marginLeft: 5
     },
+
+    GeneralText: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+
+    general: {
+        backgroundColor: '#08607e',
+    }
 });
 
 export default AutobusScreen;
