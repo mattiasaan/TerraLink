@@ -27,7 +27,7 @@ const App = () => {
                   source={require('./Screens/images/sudtirollll.png')}
                   style={{ width: 34, height: 34, marginRight: 8 }}
                 />
-                <Text>Autobus</Text>
+                <Text>Autobus </Text>
               </View>
             ),
           }}
