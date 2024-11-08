@@ -1,48 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const AutobusScreen = () => {
     return(
-        <ScrollView >
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.TouchArea}>
-                <Text>Linea 3</Text>
+                <Text style={styles.TouchAreaText}>Linea 3</Text>
             </TouchableOpacity>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    Container:{
-        flex: 1,
-        padding: 10
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 20,
     },
-    TouchArea:{
+    TouchArea: {
         backgroundColor: 'white',
         width: '80%',
-        height: '30%',
+        paddingVertical: 15,
         borderRadius: 10,
+        marginVertical: 10,
+        alignItems: 'center',
     },
-    TouchAreaText:{
-        color: 'black'
+    TouchAreaText: {
+        color: 'black',
+        fontSize: 16,
     }
 })
 
