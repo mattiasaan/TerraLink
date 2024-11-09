@@ -115,18 +115,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-start', // Adjusts placement of elements to start from top
+    alignItems: 'stretch', // Makes sure the container stretches fully
   },
   map: {
+    flex: 1, // Ensures map takes the available space
     width: '100%',
     height: '100%',
-    borderRadius: 0,
   },
-  marker: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
+  bottomSheetContent: {
+    zIndex: 1, // Ensures the BottomSheet appears above other components
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
   },
   openBottomSheetButton: {
     backgroundColor: '#0066CC',
@@ -150,16 +156,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
-  bottomSheetContent: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
+
+  marker: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
 });
+
 
 export default MappaScreen;
