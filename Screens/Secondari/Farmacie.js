@@ -26,7 +26,7 @@ const FarmacieScreen = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const url = 'http://daten.buergernetz.bz.it/services/pharmacy/v1/json';
+    const url = 'https://daten.buergernetz.bz.it/services/pharmacy/v1/json';
 
     fetch(url)
       .then((response) => response.json())
