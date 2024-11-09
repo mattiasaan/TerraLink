@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { BottomSheet, Button } from '@rneui/themed';
+import { View, Text, StyleSheet, Alert, Button } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
+import { WebView } from 'react-native-webview';
 
 const MappaScreen = () => {
-  const [region, setRegion] = useState({
-    latitude: 46.487,
-    longitude: 11.34,
-    latitudeDelta: 0.08,
-    longitudeDelta: 0.04,
-  });
-
-  const [showMarkers, setShowMarkers] = useState(false);
-  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
 
   const markers = [
@@ -45,66 +35,51 @@ const MappaScreen = () => {
     getLocation();
   }, []);
 
-  const regionState = currentLocation
-    ? {
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-        latitudeDelta: 0.08,
-        longitudeDelta: 0.04,
-      }
-    : region;
+  const generateMapHtml = () => {
+    if (!currentLocation) return '';
 
-  const toggleMarkers = () => {
-    setShowMarkers(prev => !prev);
-  };
-
-  const getMarkerButtonTitle = () => {
-    return showMarkers ? 'Nascondi defibrillatori' : 'Mostra defibrillatori';
+    
+    const mapHtml = `
+      <html>
+        <head>
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        </head>
+        <body style="margin: 0; padding: 0;">
+          <div id="map" style="width: 100%; height: 100%;"></div>
+          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+          <script>
+            var map = L.map('map').setView([${currentLocation.latitude}, ${currentLocation.longitude}], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            
+            var markers = ${JSON.stringify(markers)};
+            markers.forEach(function(marker) {
+              L.marker([marker.coordinate.latitude, marker.coordinate.longitude])
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          </script>
+        </body>
+      </html>
+    `;
+    return mapHtml;
   };
 
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
         {currentLocation ? (
-          <MapView
+          <WebView
+            originWhitelist={['*']}
+            source={{ html: generateMapHtml() }}
             style={styles.map}
-            region={regionState} // Use region here instead of initialRegion to reflect live updates
-            customMapStyle={[]}
-            urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attributionText="Map data &copy; OpenStreetMap contributors"
-          >
-            {showMarkers && markers.map(marker => (
-              <Marker
-                key={marker.id}
-                coordinate={marker.coordinate}
-                title={marker.title}
-              />
-            ))}
-          </MapView>
+          />
         ) : (
           <Text>Caricamento mappa...</Text>
         )}
 
-        <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
-          <View style={styles.bottomSheetContent}>
-            <Button
-              title={getMarkerButtonTitle()}
-              onPress={toggleMarkers}
-              buttonStyle={styles.bottomSheetButton}
-            />
-            <Button
-              title="Chiudi"
-              onPress={() => setIsBottomSheetVisible(false)}
-              buttonStyle={styles.bottomSheetButton}
-            />
-          </View>
-        </BottomSheet>
-
         <Button
-          title="Altre opzioni"
-          onPress={() => setIsBottomSheetVisible(true)}
-          buttonStyle={styles.openBottomSheetButton}
-          titleStyle={styles.titleStyle}
+          title="Ricarica la Mappa"
+          onPress={() => setCurrentLocation(null)} // Reset current location to trigger re-fetch
         />
       </View>
     </SafeAreaProvider>
@@ -115,54 +90,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    justifyContent: 'flex-start', // Adjusts placement of elements to start from top
-    alignItems: 'stretch', // Makes sure the container stretches fully
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
   },
   map: {
-    flex: 1, // Ensures map takes the available space
+    flex: 1,
     width: '100%',
     height: '100%',
   },
-  bottomSheetContent: {
-    zIndex: 1, // Ensures the BottomSheet appears above other components
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  openBottomSheetButton: {
-    backgroundColor: '#0066CC',
-    marginBottom: 30,
-    paddingVertical: 15,
-    paddingHorizontal: 0,
-    borderRadius: 15,
-    width: '100%',
-    alignSelf: 'center',
-  },
-  titleStyle: {
-    textAlign: 'center',
-    width: '100%',
-    color: '#fff',
-  },
-  bottomSheetButton: {
-    backgroundColor: '#0066CC',
-    marginTop: 10,
-    padding: 15,
-    borderRadius: 5,
-    width: '100%',
-    alignItems: 'center',
-  },
-
-  marker: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
 });
-
 
 export default MappaScreen;
