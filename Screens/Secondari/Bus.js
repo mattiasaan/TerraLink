@@ -16,22 +16,16 @@ const lineData = [
     { number: "9", start: "Funivia del Colle", end: "Stazione Ponte d'Adige", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_9_20231210.pdf" },
     { number: "10A", start: "Funivia del Renon", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10A_20231210.pdf" },
     { number: "10B", start: "Funivia del Renon", end: "Ospedale", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10B_20231210.pdf" },
-    { number: "11", start: "S. Maurizio", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_11_20231210.pdf" },
     { number: "12", start: "Funivia del Colle", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_12_20231210.pdf" },
-    { number: "13", start: "Via Lancia", end: "Via Lancia", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_13_20231210.pdf" },
     { number: "14", start: "Via Lancia", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_14_20231210.pdf" },
     { number: "15", start: "Via Lancia", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_15_20231210.pdf" },
-    { number: "16", start: "Oltrisarco", end: "Ospedale", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_16_20231210.pdf" },
-    { number: "18", start: "Oltrisarco", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_18_20231210.pdf" },
-    { number: "110", start: "Stazione Ponte d'Adige", end: "S. Paolo", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_110_20231210.pdf" },
-    { number: "111", start: "Stazione Ponte d'Adige", end: "Nalles", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_111_20231210.pdf" },
-    { number: "201", start: "Bolzano", end: "Merano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_201_20231210.pdf" },
-    { number: "202", start: "Bolzano", end: "Appiano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_202_20231210.pdf" },
-    { number: "203", start: "Bolzano", end: "Caldaro", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_203_20231210.pdf" },
-    { number: "204", start: "Bolzano", end: "Laives - S. Giacomo", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_204_20231210.pdf" },
-    { number: "206", start: "Bolzano", end: "Nova Ponente", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_206_20231210.pdf" },
-    { number: "209", start: "Bolzano", end: "Sarentino", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_209_20231210.pdf" },
-    { number: "213", start: "Bolzano", end: "Rencio - Renon", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/210_213_20231210.pdf" }
+    { number: "N1", start: "Stazione di Bolzano", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
+    { number: "N35", start: "Stazione Casanova", end: "Stazione di Bolzano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_N35_20231210.pdf" },
+    { number: "110", start: "Bolzano Autostazione", end: "Bronzolo Raif", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/110_20231210.pdf" },
+    { number: "111", start: "Bolzano Autostazione", end: "Zona Industriale Lives", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/111_20231210.pdf" },
+    { number: "183", start: "Bolzano Autostazione", end: "Cornedo", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/183_20231210.pdf" },
+    { number: "201", start: "Bolzano Autostazione", end: "Stazione di Merano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/201_20231210.pdf" },
+    
 ];
 
 const openURL = (url) => {
@@ -101,14 +95,14 @@ const styles = StyleSheet.create({
     },
     NumberText: {
         backgroundColor: '#08607e',
-        padding: 8,
-        paddingHorizontal: 20,
+        padding: 10,
+        paddingHorizontal: 15,
         borderRadius: 10,
         color: '#FFFFFF',
-        marginRight: 15,
+        marginRight: 10,
         textAlign: 'center',
         fontWeight: "bold",
-        fontSize: 14
+        fontSize: 12
     },
     StationText: {
         color: 'black',

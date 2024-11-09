@@ -28,7 +28,6 @@ const MappaScreen = () => {
     { id: 10, coordinate: { latitude: 46.4996132, longitude: 11.3569185 }, title: "Piazza municipio" },
     { id: 11, coordinate: { latitude: 46.4976197, longitude: 11.3601663 }, title: "Via Renon" },
     { id: 12, coordinate: { latitude: 46.4931729, longitude: 11.3609979 }, title: "cineplex" },
-    //{ id: 13, coordinate: { latitude: 46.498601, longitude: 11.309258 }, title: "Ospedale", image: require("./images-2/ospedale.png")}
   ];
 
   return (

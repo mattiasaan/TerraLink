@@ -13,7 +13,7 @@ function èApertaOra(orarioNormale, orarioTurno, èDiTurno, statoTurno) {
 
   if (verificaOrario(orarioNormale)) return true;
 
-  if (èDiTurno === 1 || statoTurno === "SERVIZIO TURNO" && verificaOrario(orarioTurno)) { //zio porco l'or 
+  if (èDiTurno === 1 || statoTurno === "SERVIZIO TURNO" && verificaOrario(orarioTurno)) {
     return true;
   }
 
@@ -37,7 +37,6 @@ const FarmacieScreen = () => {
         
         setData(farmacieFiltrate);
         setLoading(false);
-        console.log("apposto")
       })
       .catch((errore) => {
         console.error(errore);
@@ -46,7 +45,6 @@ const FarmacieScreen = () => {
   }, []);
 
   if (loading) {
-    console.log("inizio")
     return (
       <View style={styles.container}>
         <ActivityIndicator size="large" color="#00ff00" />
