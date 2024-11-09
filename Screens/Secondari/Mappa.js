@@ -45,7 +45,6 @@ const MappaScreen = () => {
     getLocation();
   }, []);
 
-  // Update the regionState based on the availability of currentLocation
   const regionState = currentLocation
     ? {
         latitude: currentLocation.latitude,
@@ -53,7 +52,7 @@ const MappaScreen = () => {
         latitudeDelta: 0.08,
         longitudeDelta: 0.04,
       }
-    : region; // Fallback to the default region
+    : region;
 
   const toggleMarkers = () => {
     setShowMarkers(prev => !prev);
@@ -66,23 +65,25 @@ const MappaScreen = () => {
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        {/* Conditionally render the MapView only after currentLocation is available */}
         {currentLocation ? (
           <MapView
             style={styles.map}
-            initialRegion={regionState} // Using initialRegion instead of region to prevent unnecessary state updates
+            initialRegion={regionState}
+            provider="google" // o 'google' o 'osmdroid'
+            customMapStyle={[]}
+            urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attributionText="Map data &copy; OpenStreetMap contributors"
           >
             {showMarkers && markers.map(marker => (
               <Marker
                 key={marker.id}
                 coordinate={marker.coordinate}
                 title={marker.title}
-                // Removed the image prop from the Marker
               />
             ))}
           </MapView>
         ) : (
-          <Text>Loading map...</Text>
+          <Text>Caricamento mappa...</Text>
         )}
 
         <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
