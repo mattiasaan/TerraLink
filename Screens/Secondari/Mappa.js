@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Alert } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { BottomSheet, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as Location from 'expo-location';
 
 const MappaScreen = () => {
-  const [region] = useState({
-    latitude: 46.487, 
-    longitude: 11.34, 
+  const [region, setRegion] = useState({
+    latitude: 46.487,
+    longitude: 11.34,
     latitudeDelta: 0.08,
     longitudeDelta: 0.04,
   });
-  
+
   const [showMarkers, setShowMarkers] = useState(false);
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   const markers = [
     { id: 1, coordinate: { latitude: 46.488516, longitude: 11.324721 }, title: "Piazza Don Bosco" },
@@ -30,20 +32,56 @@ const MappaScreen = () => {
     { id: 12, coordinate: { latitude: 46.4931729, longitude: 11.3609979 }, title: "cineplex" },
   ];
 
+  useEffect(() => {
+    const getLocation = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status === 'granted') {
+        const location = await Location.getCurrentPositionAsync({});
+        setCurrentLocation(location.coords);
+      } else {
+        Alert.alert('Permission denied');
+      }
+    };
+    getLocation();
+  }, []);
+
+  const regionState = currentLocation
+    ? {
+        latitude: currentLocation.latitude,
+        longitude: currentLocation.longitude,
+        latitudeDelta: 0.08,
+        longitudeDelta: 0.04,
+      }
+    : region;
+
+  const toggleMarkers = () => {
+    setShowMarkers(prev => !prev);
+  };
+
+  const getMarkerButtonTitle = () => {
+    return showMarkers ? "Nascondi defibrillatori" : "Mostra defibrillatori";
+  };
+
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <MapView style={styles.map} region={region}>
+        <MapView style={styles.map} region={regionState}>
           {showMarkers && markers.map(marker => (
-            <Marker key={marker.id} coordinate={marker.coordinate} title={marker.title} image={require('./images-2/dae-simbolo.png')} style={styles.marker} />
+            <Marker
+              key={marker.id}
+              coordinate={marker.coordinate}
+              title={marker.title}
+              image={require('./images-2/dae-simbolo.png')}
+              style={styles.marker}
+            />
           ))}
         </MapView>
 
         <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
           <View style={styles.bottomSheetContent}>
             <Button
-              title={showMarkers ? "Nascondi defibrillatori" : "Mostra defibrillatori"}
-              onPress={() => setShowMarkers(!showMarkers)}
+              title={getMarkerButtonTitle()}
+              onPress={toggleMarkers}
               buttonStyle={styles.bottomSheetButton}
             />
             <Button
@@ -60,10 +98,6 @@ const MappaScreen = () => {
           buttonStyle={styles.openBottomSheetButton}
           titleStyle={styles.titleStyle}
         />
-
-        <Text style={styles.nota}>
-          Nota: la posizione dei defibrillatori potrebbe non essere precisa o non accessibile
-        </Text>
       </View>
     </SafeAreaProvider>
   );
@@ -82,26 +116,24 @@ const styles = StyleSheet.create({
     borderRadius: 0,
   },
   marker: {
-    width: 10,
-    height: 10,
+    width: 30,
+    height: 30,
     resizeMode: 'contain',
   },
   openBottomSheetButton: {
     backgroundColor: '#0066CC',
-    marginBottom: 20,
+    marginBottom: 30,
     paddingVertical: 15,
     paddingHorizontal: 0,
-    borderRadius: 5,
+    borderRadius: 15,
     width: '100%',
     alignSelf: 'center',
   },
-  
   titleStyle: {
     textAlign: 'center',
     width: '100%',
     color: '#fff',
   },
-
   bottomSheetButton: {
     backgroundColor: '#0066CC',
     marginTop: 10,

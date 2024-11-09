@@ -6,25 +6,25 @@ import DownloadImage2 from './images-2/download-2-line-2.png';
 
 
 const lineData = [
-    { number: "1", start: "Funivia del Colle", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
-    { number: "3", start: "Casanova", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_3_20241130.pdf" },
-    { number: "5", start: "Firmian", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_5_20241130.pdf" },
-    { number: "6", start: "Funivia del Colle", end: "Via Lancia", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_6_20231210.pdf" },
-    { number: "7A", start: "Passeggiata dei castagni", end: "Passeggiata dei castagni", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_7A_20231210.pdf" },
-    { number: "7B", start: "Passeggiata dei castagni", end: "Passeggiata dei castagni", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_7B_20231210.pdf" },
-    { number: "8", start: "Padiglione W", end: "Cardano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_8_20231210.pdf" },
-    { number: "9", start: "Funivia del Colle", end: "Stazione Ponte d'Adige", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_9_20231210.pdf" },
-    { number: "10A", start: "Funivia del Renon", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10A_20231210.pdf" },
-    { number: "10B", start: "Funivia del Renon", end: "Ospedale", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10B_20231210.pdf" },
-    { number: "12", start: "Funivia del Colle", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_12_20231210.pdf" },
-    { number: "14", start: "Via Lancia", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_14_20231210.pdf" },
-    { number: "15", start: "Via Lancia", end: "Via Perathoner", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_15_20231210.pdf" },
-    { number: "N1", start: "Stazione di Bolzano", end: "Piazza Gries", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
-    { number: "N35", start: "Stazione Casanova", end: "Stazione di Bolzano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_N35_20231210.pdf" },
-    { number: "110", start: "Bolzano Autostazione", end: "Bronzolo Raif", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/110_20231210.pdf" },
-    { number: "111", start: "Bolzano Autostazione", end: "Zona Industriale Lives", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/111_20231210.pdf" },
-    { number: "183", start: "Bolzano Autostazione", end: "Cornedo", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/183_20231210.pdf" },
-    { number: "201", start: "Bolzano Autostazione", end: "Stazione di Merano", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/201_20231210.pdf" },
+    { number: "1", start: "Funivia del Colle ", end: "Piazza Gries ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
+    { number: "3", start: "Casanova ", end: "Via Perathoner ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_3_20241130.pdf" },
+    { number: "5", start: "Firmian ", end: "Via Perathoner ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_5_20241130.pdf" },
+    { number: "6", start: "Funivia del Colle ", end: "Via Lancia ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_6_20231210.pdf" },
+    { number: "7A", start: "Passeggiata castagni" , end: "Passeggiata castagni ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_7A_20231210.pdf" },
+    { number: "7B", start: "Passeggiata castagni ", end: "Passeggiata castagni ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_7B_20231210.pdf" },
+    { number: "8", start: "Padiglione W ", end: "Cardano ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_8_20231210.pdf" },
+    { number: "9", start: "Funivia del Colle ", end: "Stazione Ponte d'Adige ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_9_20231210.pdf" },
+    { number: "10A", start: "Funivia del Renon ", end: "Via Perathoner ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10A_20231210.pdf" },
+    { number: "10B", start: "Funivia del Renon ", end: "Ospedale ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_10B_20231210.pdf" },
+    { number: "12", start: "Funivia del Colle ", end: "Via Perathoner ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_12_20231210.pdf" },
+    { number: "14", start: "Via Lancia ", end: "Piazza Gries ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_14_20231210.pdf" },
+    { number: "15", start: "Via Lancia ", end: "Via Perathoner ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_15_20231210.pdf" },
+    { number: "N1", start: "Stazione di Bolzano ", end: "Piazza Gries ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_1_20240905.pdf" },
+    { number: "N35", start: "Stazione Casanova ", end: "Stazione di Bolzano ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/BZ_N35_20231210.pdf" },
+    { number: "110", start: "Bolzano Autostazione ", end: "Bronzolo Raif ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/110_20231210.pdf" },
+    { number: "111", start: "Bolzano Autostazione ", end: "Zona Industriale Lives ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/111_20231210.pdf" },
+    { number: "183", start: "Bolzano Autostazione ", end: "Cornedo ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/183_20231210.pdf" },
+    { number: "201", start: "Bolzano Autostazione ", end: "Stazione di Merano ", url: "https://www.suedtirolmobil.info/fileadmin/pdf/2024/201_20231210.pdf" },
     
 ];
 
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
 
     GeneralText: {
         color: '#FFFFFF',
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: "bold"
     },
 
