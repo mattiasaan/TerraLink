@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import { BottomSheet, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
 
@@ -13,8 +12,6 @@ const MappaScreen = () => {
     longitudeDelta: 0.04,
   });
 
-  const [showMarkers, setShowMarkers] = useState(false);
-  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
 
   const markers = [
@@ -54,19 +51,11 @@ const MappaScreen = () => {
       }
     : region;
 
-  const toggleMarkers = () => {
-    setShowMarkers(prev => !prev);
-  };
-
-  const getMarkerButtonTitle = () => {
-    return showMarkers ? "Nascondi defibrillatori" : "Mostra defibrillatori";
-  };
-
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
         <MapView style={styles.map} region={regionState}>
-          {showMarkers && markers.map(marker => (
+          {markers.map(marker => (
             <Marker
               key={marker.id}
               coordinate={marker.coordinate}
@@ -76,28 +65,6 @@ const MappaScreen = () => {
             />
           ))}
         </MapView>
-
-        <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
-          <View style={styles.bottomSheetContent}>
-            <Button
-              title={getMarkerButtonTitle()}
-              onPress={toggleMarkers}
-              buttonStyle={styles.bottomSheetButton}
-            />
-            <Button
-              title="Chiudi"
-              onPress={() => setIsBottomSheetVisible(false)}
-              buttonStyle={styles.bottomSheetButton}
-            />
-          </View>
-        </BottomSheet>
-
-        <Button
-          title="Altre opzioni"
-          onPress={() => setIsBottomSheetVisible(true)}
-          buttonStyle={styles.openBottomSheetButton}
-          titleStyle={styles.titleStyle}
-        />
       </View>
     </SafeAreaProvider>
   );
@@ -119,43 +86,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'contain',
-  },
-  openBottomSheetButton: {
-    backgroundColor: '#0066CC',
-    marginBottom: 30,
-    paddingVertical: 15,
-    paddingHorizontal: 0,
-    borderRadius: 15,
-    width: '100%',
-    alignSelf: 'center',
-  },
-  titleStyle: {
-    textAlign: 'center',
-    width: '100%',
-    color: '#fff',
-  },
-  bottomSheetButton: {
-    backgroundColor: '#0066CC',
-    marginTop: 10,
-    padding: 15,
-    borderRadius: 5,
-    width: '100%',
-    alignItems: 'center',
-  },
-  bottomSheetContent: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  nota: {
-    fontSize: 8,
-    marginTop: 10,
-    textAlign: 'center',
   },
 });
 
