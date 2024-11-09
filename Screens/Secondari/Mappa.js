@@ -39,7 +39,7 @@ const MappaScreen = () => {
         const location = await Location.getCurrentPositionAsync({});
         setCurrentLocation(location.coords);
       } else {
-        Alert.alert('Permesso negato', 'Vai nelle impostazioni per dare l accesso alla posizione esatta');
+        Alert.alert('Permesso negato', 'Vai nelle impostazioni per dare l accesso alla posizione');
       }
     };
     getLocation();
@@ -68,8 +68,7 @@ const MappaScreen = () => {
         {currentLocation ? (
           <MapView
             style={styles.map}
-            initialRegion={regionState}
-            provider="default" // o 'google' o 'osmdroid'
+            region={regionState} // Use region here instead of initialRegion to reflect live updates
             customMapStyle={[]}
             urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attributionText="Map data &copy; OpenStreetMap contributors"
