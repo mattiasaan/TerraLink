@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Alert } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import { View, Text, StyleSheet, Alert } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { BottomSheet, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
+import { Asset } from 'expo-asset';  // Import expo-asset to handle images
 
 const MappaScreen = () => {
   const [region, setRegion] = useState({
@@ -12,6 +14,8 @@ const MappaScreen = () => {
     longitudeDelta: 0.04,
   });
 
+  const [showMarkers, setShowMarkers] = useState(false);
+  const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(null);
 
   const markers = [
@@ -42,6 +46,7 @@ const MappaScreen = () => {
     getLocation();
   }, []);
 
+  // Update the regionState based on the availability of currentLocation
   const regionState = currentLocation
     ? {
         latitude: currentLocation.latitude,
@@ -49,22 +54,63 @@ const MappaScreen = () => {
         latitudeDelta: 0.08,
         longitudeDelta: 0.04,
       }
-    : region;
+    : region; // Fallback to the default region
+
+  const toggleMarkers = () => {
+    setShowMarkers(prev => !prev);
+  };
+
+  const getMarkerButtonTitle = () => {
+    return showMarkers ? 'Nascondi defibrillatori' : 'Mostra defibrillatori';
+  };
+
+  // Using expo-asset to load the image URI
+  const image = Asset.fromModule(require('./images-2/dae-simbolo.png')).uri;
 
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <MapView style={styles.map} region={regionState}>
-          {markers.map(marker => (
-            <Marker
-              key={marker.id}
-              coordinate={marker.coordinate}
-              title={marker.title}
-              image={require('./images-2/dae-simbolo.png')}
-              style={styles.marker}
+        {/* Conditionally render the MapView only after currentLocation is available */}
+        {currentLocation ? (
+          <MapView
+            style={styles.map}
+            initialRegion={regionState} // Using initialRegion instead of region to prevent unnecessary state updates
+          >
+            {showMarkers && markers.map(marker => (
+              <Marker
+                key={marker.id}
+                coordinate={marker.coordinate}
+                title={marker.title}
+                image={{ uri: image }}  // Using URI from expo-asset
+                style={styles.marker}
+              />
+            ))}
+          </MapView>
+        ) : (
+          <Text>Loading map...</Text>
+        )}
+
+        <BottomSheet modalProps={{}} isVisible={isBottomSheetVisible}>
+          <View style={styles.bottomSheetContent}>
+            <Button
+              title={getMarkerButtonTitle()}
+              onPress={toggleMarkers}
+              buttonStyle={styles.bottomSheetButton}
             />
-          ))}
-        </MapView>
+            <Button
+              title="Chiudi"
+              onPress={() => setIsBottomSheetVisible(false)}
+              buttonStyle={styles.bottomSheetButton}
+            />
+          </View>
+        </BottomSheet>
+
+        <Button
+          title="Altre opzioni"
+          onPress={() => setIsBottomSheetVisible(true)}
+          buttonStyle={styles.openBottomSheetButton}
+          titleStyle={styles.titleStyle}
+        />
       </View>
     </SafeAreaProvider>
   );
@@ -78,14 +124,46 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   map: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     borderRadius: 0,
   },
   marker: {
     width: 30,
     height: 30,
     resizeMode: 'contain',
+  },
+  openBottomSheetButton: {
+    backgroundColor: '#0066CC',
+    marginBottom: 30,
+    paddingVertical: 15,
+    paddingHorizontal: 0,
+    borderRadius: 15,
+    width: '100%',
+    alignSelf: 'center',
+  },
+  titleStyle: {
+    textAlign: 'center',
+    width: '100%',
+    color: '#fff',
+  },
+  bottomSheetButton: {
+    backgroundColor: '#0066CC',
+    marginTop: 10,
+    padding: 15,
+    borderRadius: 5,
+    width: '100%',
+    alignItems: 'center',
+  },
+  bottomSheetContent: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
   },
 });
 
