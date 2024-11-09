@@ -4,7 +4,6 @@ import MapView, { Marker } from 'react-native-maps';
 import { BottomSheet, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
-import { Asset } from 'expo-asset';  // Import expo-asset to handle images
 
 const MappaScreen = () => {
   const [region, setRegion] = useState({
@@ -64,9 +63,6 @@ const MappaScreen = () => {
     return showMarkers ? 'Nascondi defibrillatori' : 'Mostra defibrillatori';
   };
 
-  // Using expo-asset to load the image URI
-  const image = Asset.fromModule(require('./images-2/dae-simbolo.png')).uri;
-
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
@@ -81,8 +77,7 @@ const MappaScreen = () => {
                 key={marker.id}
                 coordinate={marker.coordinate}
                 title={marker.title}
-                image={{ uri: image }}  // Using URI from expo-asset
-                style={styles.marker}
+                // Removed the image prop from the Marker
               />
             ))}
           </MapView>
