@@ -39,7 +39,7 @@ const MappaScreen = () => {
         const location = await Location.getCurrentPositionAsync({});
         setCurrentLocation(location.coords);
       } else {
-        Alert.alert('Permission denied');
+        Alert.alert('Permesso negato', 'Vai nelle impostazioni per dare l accesso alla posizione esatta');
       }
     };
     getLocation();
