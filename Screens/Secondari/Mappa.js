@@ -69,7 +69,7 @@ const MappaScreen = () => {
           <MapView
             style={styles.map}
             initialRegion={regionState}
-            provider="google" // o 'google' o 'osmdroid'
+            provider="default" // o 'google' o 'osmdroid'
             customMapStyle={[]}
             urlTemplate="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attributionText="Map data &copy; OpenStreetMap contributors"
