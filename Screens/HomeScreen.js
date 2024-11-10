@@ -34,12 +34,12 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const apiKey = "3a5ad1809fcd5fe67afe4eb8d0f9ef82"; // api (non la mettere in posti strani plz)
+        const apiKey = "3a5ad1809fcd5fe67afe4eb8d0f9ef82";
         const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=Bolzano,IT&appid=${apiKey}&units=metric&lang=it`
         );
 
-        console.log("Dati meteo ricevuti:", response.data); // Log
+        console.log("Dati meteo ricevuti:", response.data);
         if (response.status === 200) {
           setWeather(response.data);
         }
